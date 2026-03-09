@@ -2,7 +2,7 @@
 
 mkcert is a simple tool for making locally-trusted development certificates. It requires no configuration.
 
-```
+```bash
 $ mkcert -install
 Created a new local CA 💥
 The local CA is now installed in the system trust store! ⚡️
@@ -35,14 +35,14 @@ mkcert automatically creates and installs a local CA in the system root store, a
 
 On macOS, use [Homebrew](https://brew.sh/)
 
-```
+```bash
 brew install mkcert
 brew install nss # if you use Firefox
 ```
 
 or [MacPorts](https://www.macports.org/).
 
-```
+```bash
 sudo port selfupdate
 sudo port install mkcert
 sudo port install nss # if you use Firefox
@@ -52,7 +52,7 @@ sudo port install nss # if you use Firefox
 
 On Linux, first install `certutil`.
 
-```
+```bash
 sudo apt install libnss3-tools
     -or-
 sudo yum install nss-tools
@@ -64,20 +64,20 @@ sudo zypper install mozilla-nss-tools
 
 Then you can install using [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)
 
-```
+```bash
 brew install mkcert
 ```
 
 or build from source (requires Go 1.13+)
 
-```
+```bash
 git clone https://github.com/FiloSottile/mkcert && cd mkcert
 go build -ldflags "-X main.Version=$(git describe --tags)"
 ```
 
 or use [the pre-built binaries](https://github.com/FiloSottile/mkcert/releases).
 
-```
+```bash
 curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
 chmod +x mkcert-v*-linux-amd64
 sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
@@ -85,7 +85,7 @@ sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
 For Arch Linux users, [`mkcert`](https://archlinux.org/packages/extra/x86_64/mkcert/) is available on the official Arch Linux repository.
 
-```
+```bash
 sudo pacman -Syu mkcert
 ```
 
@@ -93,13 +93,13 @@ sudo pacman -Syu mkcert
 
 On Windows, use [Chocolatey](https://chocolatey.org)
 
-```
+```bash
 choco install mkcert
 ```
 
 or use Scoop
 
-```
+```bash
 scoop bucket add extras
 scoop install mkcert
 ```
@@ -128,7 +128,7 @@ To only install the local root CA into a subset of them, you can set the `TRUST_
 
 ### Advanced options
 
-```
+```java
 	-cert-file FILE, -key-file FILE, -p12-file FILE
 	    Customize the output paths.
 
@@ -151,7 +151,7 @@ To only install the local root CA into a subset of them, you can set the `TRUST_
 
 #### Example
 
-```
+```bash
 mkcert -key-file key.pem -cert-file cert.pem example.com *.example.com
 ```
 
@@ -159,7 +159,7 @@ mkcert -key-file key.pem -cert-file cert.pem example.com *.example.com
 
 mkcert automatically generates an S/MIME certificate if one of the supplied names is an email address.
 
-```
+```bash
 mkcert filippo@example.com
 ```
 
@@ -175,7 +175,7 @@ For Android, you will have to install the CA and then enable user roots in the d
 
 Node does not use the system root store, so it won't accept mkcert certificates automatically. Instead, you will have to set the [`NODE_EXTRA_CA_CERTS`](https://nodejs.org/api/cli.html#cli_node_extra_ca_certs_file) environment variable.
 
-```
+```bash
 export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 ```
 
